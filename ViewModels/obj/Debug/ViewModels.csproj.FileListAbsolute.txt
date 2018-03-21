@@ -1,0 +1,5 @@
+D:\studdy\7th Semester\SDT\Semester Project\ViewModels\bin\Debug\ViewModels.dll
+D:\studdy\7th Semester\SDT\Semester Project\ViewModels\bin\Debug\ViewModels.pdb
+D:\studdy\7th Semester\SDT\Semester Project\ViewModels\obj\Debug\ViewModels.csprojResolveAssemblyReference.cache
+D:\studdy\7th Semester\SDT\Semester Project\ViewModels\obj\Debug\ViewModels.dll
+D:\studdy\7th Semester\SDT\Semester Project\ViewModels\obj\Debug\ViewModels.pdb

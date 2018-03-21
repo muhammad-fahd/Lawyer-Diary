@@ -1,0 +1,137 @@
+﻿<Window x:Class="Lawyer_Diary.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:Lawyer_Diary"
+        Icon="images/icon.png"
+        WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d"
+        Title="Lawyer Diary" MinHeight="500" MinWidth="750" Height="600" Width="900">
+    <!--<Style x:Key="styleCalender" TargetType="{x:Type Calendar}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Calendar}">
+                    <Viewbox Height="400" Width="400">
+                        <CalendarItem x:Name="PART_CalendarItem" Background="{TemplateBinding Background}"
+                                      BorderBrush="{TemplateBinding BorderBrush}"
+                                      BorderThickness="{TemplateBinding BorderThickness}" />
+                    </Viewbox>
+                </ControlTemplate>
+            </Setter.Value>
+            </Setter>
+    </Style>-->
+
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="23*"/>
+            <ColumnDefinition Width="70*"/>
+            <ColumnDefinition Width="22*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="8*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2">
+            <Grid Grid.Column="0">
+                <Menu Width="auto" Height="26" VerticalAlignment="Top" >
+                    <MenuItem Header="Cases" Width="70" Height="25" FontSize="15">
+                        <MenuItem  Name="menuaddNewCase" Header="Add New Case" Height="25" FontSize="13" Click="menuaddNewCase_Click"/>
+                        <MenuItem  Name="menuPendingCase" Header="Pending Case" Height="25" FontSize="13" Click="menuPendingCase_Click"/>
+                        <MenuItem  Name="menuCaseCompCase" Header="Complete Case" Height="25" FontSize="13" Click="menuCaseCompCase_Click"/>
+                        <MenuItem  Name="menuCaseAllCase" Header="All Case" Height="25" FontSize="13" Click="menuCaseAllCase_Click"/>
+                    </MenuItem>
+                    <MenuItem Header="Clients" Name="menuHelp" Width="70" Height="25" FontSize="15" >
+                        <MenuItem  Name="menuAddClient" Header="Add Client" Height="25" FontSize="13" Click="menuAddClient_Click"/>
+                        <MenuItem  Name="menuShowClients" Header="Show Clients" Height="25" FontSize="13" Click="menuShowClients_Click"/>
+                    </MenuItem>
+                    <MenuItem Header="Account" Name="menuAccount" Width="70" Height="25" FontSize="15" >
+                        <MenuItem Header="Add Employee" Name="menuAddNewEmployee" Click="menuAddNewEmployee_Click" />
+                        <MenuItem Header="Show Employee" Name="menuShowEmployee" Click="menuShowEmployee_Click"  />
+                        <MenuItem Header="Logout" Name="menuAccountLogout" Click="menuAccountLogout_Click" />
+                    </MenuItem>
+                </Menu>
+            </Grid>
+            <!--<Grid Grid.Column="2">
+                <Button Name="btnLogout" Background="Lavender" Content="Logout" FontStyle="Oblique"
+                    FontWeight="Bold" HorizontalAlignment="Center"
+                    VerticalAlignment="Top" VerticalContentAlignment="Top" 
+                    Width="100" Foreground="Red" FontSize="13" Click="btnLogout_Click"/>
+            </Grid>-->
+        </Grid>
+
+        <Grid Grid.Column="0" Grid.Row="0" Grid.RowSpan="7" Background="WhiteSmoke">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Column="0" Grid.Row="3" Background="WhiteSmoke">
+                <Button Name="btnUpdateCaseHearingFromMenu" Content="Update Hearing Dates" FontSize="15"  
+                    FontWeight="DemiBold" 
+                    Background="Blue" Foreground="White" 
+                    Cursor="Hand" Click="btnUpdateCaseHearingFromMenu_Click"  />
+            </Grid>
+            <Grid Grid.Column="0" Grid.Row="4" Background="WhiteSmoke">
+                <Button Name="btnTodaysCaseHearingFromMenu" Content="Today's Hearing " FontSize="15"
+                    FontWeight="DemiBold" 
+                    Background="Blue" Foreground="White" Click="btnTodaysCaseHearingFromMenu_Click"   />
+            </Grid>
+            <Grid Grid.Column="0" Grid.Row="5" Background="WhiteSmoke">
+                <Button Name="btnTomorrowCaseHearingFromMenu" Content="Tomorrow's Hearings"  FontSize="15" 
+                    FontWeight="DemiBold" 
+                    Background="Blue" Foreground="White" Click="btnTomorrowCaseHearingFromMenu_Click"    />
+            </Grid>
+            <Grid Grid.Column="0" Grid.Row="6" Background="WhiteSmoke">
+                <Button Name="btnNextWeekCaseHearingFromMenu" Content="Next Week Hearing Dates" FontSize="15" 
+                    FontWeight="DemiBold" 
+                    Background="Blue" Foreground="White" Click="btnNextWeekCaseHearingFromMenu_Click" 
+                     />
+            </Grid>
+            <Grid Grid.Column="0" Grid.Row="7" Background="WhiteSmoke">
+                <Button Name="btnCaseHearingByDates" Content="Hearing By Date" FontSize="15" 
+                    FontWeight="DemiBold" 
+                     Background="Blue" Foreground="White" Click="btnCaseHearingByDates_Click" />
+            </Grid>
+            <Grid Grid.Row="0" Grid.RowSpan="3" Background="CadetBlue" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="7*"/>
+                    <RowDefinition Height="3*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Image Source="images/user2.png" Margin="0 10 0 0" />
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Label Name="lblwelcomeNote" Content="Todays date" HorizontalAlignment="Center" 
+                   FontSize="14" FontWeight="DemiBold" Foreground="Indigo" VerticalAlignment="Top"></Label>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="0" Grid.RowSpan="6" Grid.ColumnSpan="2"
+              Name="userControleHolder" Margin="0 26 0 0">
+        </Grid>
+    </Grid>
+
+
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5 , 0" StartPoint="0.5 , 1">
+            <GradientStop Color="CadetBlue" Offset="1"></GradientStop>
+            <GradientStop Color="White" Offset="1"></GradientStop>
+        </LinearGradientBrush>
+    </Window.Background>
+</Window>

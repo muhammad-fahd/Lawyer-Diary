@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="Lawyer_Diary.Hearings.HearingByDates"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Lawyer_Diary.Hearings"
+             mc:Ignorable="d" 
+             d:DesignHeight="610" d:DesignWidth="520" Loaded="UserControl_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="0.8*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Background="DarkKhaki">
+            <Label Content="Select Date to see the hearings on that date" FontSize="15"
+                   VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                   Foreground="Indigo" FontWeight="DemiBold"/>
+        </Grid>
+        <Grid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Background="DarkKhaki">
+            <DatePicker Name="dpSelectDate" Width="200" VerticalAlignment="Center" HorizontalAlignment="Center"
+                        SelectedDateChanged="dpSelectDate_SelectedDateChanged"/>
+        </Grid>
+        <Grid Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" Grid.RowSpan="2">
+            <DataGrid Name="completeCasesDataGrid" SelectionMode="Single" AlternatingRowBackground="CadetBlue" FontSize="12"
+                  ItemsSource="{Binding}" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True"
+                      SelectionChanged="completeCasesDataGrid_SelectionChanged">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Case Id" Binding="{Binding CaseId}" Width="30*"/>
+                    <DataGridTextColumn Header="Hearing Date" Binding="{Binding HearingDate}" Width="35*"/>
+                    <DataGridTextColumn Header="Hearing Time" Binding="{Binding HearingTime}" Width="35*"/>
+                    
+                    <!--<DataGridTextColumn Header="CaseID" Binding="{Binding CaseId}" Width="1.1*"/>
+                    <DataGridTextColumn Header="Plaintiff" Binding="{Binding Plaintiff}" Width="1.2*"/>
+                    <DataGridTextColumn Header="Defender" Binding="{Binding Defender}" Width="1.2*"/>
+                    <DataGridTextColumn Header="Type" Binding="{Binding CaseType}" Width="1.2*"/>
+                    <DataGridTextColumn Header="Case Discription" Binding="{Binding CaseDiscription}" Width="5*"/>
+                    <DataGridTextColumn Header="Client CNIC" Binding="{Binding ClientId}" Width="1.5*"/>-->
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="4">
+            <Button Content="Open Case" Name="btnOpenCase"  FontSize="15" FontWeight="DemiBold" Height="40"
+                    Background="Blue" Foreground="White" Width="180"  VerticalContentAlignment="Center" Click="btnOpenCase_Click"/>
+        </Grid>
+    </Grid>
+    <UserControl.Background>
+        <LinearGradientBrush EndPoint="0.5 , 0" StartPoint="0.5 , 1">
+            <GradientStop Color="CadetBlue" Offset="1"></GradientStop>
+            <GradientStop Color="White" Offset="1"></GradientStop>
+        </LinearGradientBrush>
+    </UserControl.Background>
+</UserControl>

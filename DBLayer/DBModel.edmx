@@ -1,0 +1,351 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Case">
+          <Key>
+            <PropertyRef Name="CaseId" />
+          </Key>
+          <Property Name="CaseId" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="CaseName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Plaintiff" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Defender" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OpponentLawyer" Type="nvarchar" MaxLength="50" />
+          <Property Name="CaseDiscription" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="startDate" Type="date" Nullable="false" />
+          <Property Name="CourtId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CaseType" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ClientId" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="isComplete" Type="bit" />
+        </EntityType>
+        <EntityType Name="CaseHearingDate">
+          <Key>
+            <PropertyRef Name="CaseHearingId" />
+          </Key>
+          <Property Name="CaseHearingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CaseId" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="HearingDate" Type="date" Nullable="false" />
+          <Property Name="HearingTime" Type="time" Precision="7" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="ClientName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="ClientFname" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="ClientContact" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="ClientAddress" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Court">
+          <Key>
+            <PropertyRef Name="CourtId" />
+          </Key>
+          <Property Name="CourtId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CourtType" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="CourtCity" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserAccount">
+          <Key>
+            <PropertyRef Name="userName" />
+          </Key>
+          <Property Name="userName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="userId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Contact" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RoleID" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserRoles">
+          <Key>
+            <PropertyRef Name="roleID" />
+          </Key>
+          <Property Name="roleID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="roleName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Case_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Case" Type="Self.Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="Case">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Case_Court">
+          <End Role="Court" Type="Self.Court" Multiplicity="1" />
+          <End Role="Case" Type="Self.Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Court">
+              <PropertyRef Name="CourtId" />
+            </Principal>
+            <Dependent Role="Case">
+              <PropertyRef Name="CourtId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAccount_UserRoles">
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="1" />
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRoles">
+              <PropertyRef Name="roleID" />
+            </Principal>
+            <Dependent Role="UserAccount">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="Case" EntityType="Self.Case" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CaseHearingDate" EntityType="Self.CaseHearingDate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Court" EntityType="Self.Court" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserAccount" EntityType="Self.UserAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Case_Client" Association="Self.FK_Case_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Case" EntitySet="Case" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Case_Court" Association="Self.FK_Case_Court">
+            <End Role="Court" EntitySet="Court" />
+            <End Role="Case" EntitySet="Case" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAccount_UserRoles" Association="Self.FK_UserAccount_UserRoles">
+            <End Role="UserRoles" EntitySet="UserRoles" />
+            <End Role="UserAccount" EntitySet="UserAccount" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Case">
+          <Key>
+            <PropertyRef Name="CaseId" />
+          </Key>
+          <Property Name="CaseId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CaseName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Plaintiff" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Defender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OpponentLawyer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CaseDiscription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="startDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CourtId" Type="Guid" Nullable="false" />
+          <Property Name="CaseType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ClientId" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="isComplete" Type="Boolean" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_Case_Client" FromRole="Case" ToRole="Client" />
+          <NavigationProperty Name="Court" Relationship="Self.FK_Case_Court" FromRole="Case" ToRole="Court" />
+        </EntityType>
+        <EntityType Name="CaseHearingDate">
+          <Key>
+            <PropertyRef Name="CaseHearingId" />
+          </Key>
+          <Property Name="CaseHearingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CaseId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HearingDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="HearingTime" Type="Time" Precision="7" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClientName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClientFname" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClientContact" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClientAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Cases" Relationship="Self.FK_Case_Client" FromRole="Client" ToRole="Case" />
+        </EntityType>
+        <EntityType Name="Court">
+          <Key>
+            <PropertyRef Name="CourtId" />
+          </Key>
+          <Property Name="CourtId" Type="Guid" Nullable="false" />
+          <Property Name="CourtType" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CourtCity" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Cases" Relationship="Self.FK_Case_Court" FromRole="Court" ToRole="Case" />
+        </EntityType>
+        <EntityType Name="UserAccount">
+          <Key>
+            <PropertyRef Name="userName" />
+          </Key>
+          <Property Name="userName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="userId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoleID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="UserRole" Relationship="Self.FK_UserAccount_UserRoles" FromRole="UserAccount" ToRole="UserRoles" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="roleID" />
+          </Key>
+          <Property Name="roleID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="roleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="UserAccounts" Relationship="Self.FK_UserAccount_UserRoles" FromRole="UserRoles" ToRole="UserAccount" />
+        </EntityType>
+        <Association Name="FK_Case_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Case" Type="Self.Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ClientId" />
+            </Principal>
+            <Dependent Role="Case">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Case_Court">
+          <End Role="Court" Type="Self.Court" Multiplicity="1" />
+          <End Role="Case" Type="Self.Case" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Court">
+              <PropertyRef Name="CourtId" />
+            </Principal>
+            <Dependent Role="Case">
+              <PropertyRef Name="CourtId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAccount_UserRoles">
+          <End Role="UserRoles" Type="Self.UserRole" Multiplicity="1" />
+          <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRoles">
+              <PropertyRef Name="roleID" />
+            </Principal>
+            <Dependent Role="UserAccount">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Lawyer_DatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cases" EntityType="Self.Case" />
+          <EntitySet Name="CaseHearingDates" EntityType="Self.CaseHearingDate" />
+          <EntitySet Name="Clients" EntityType="Self.Client" />
+          <EntitySet Name="Courts" EntityType="Self.Court" />
+          <EntitySet Name="UserAccounts" EntityType="Self.UserAccount" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+          <AssociationSet Name="FK_Case_Client" Association="Self.FK_Case_Client">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="Case" EntitySet="Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Case_Court" Association="Self.FK_Case_Court">
+            <End Role="Court" EntitySet="Courts" />
+            <End Role="Case" EntitySet="Cases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAccount_UserRoles" Association="Self.FK_UserAccount_UserRoles">
+            <End Role="UserRoles" EntitySet="UserRoles" />
+            <End Role="UserAccount" EntitySet="UserAccounts" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Lawyer_DatabaseEntities">
+          <EntitySetMapping Name="Cases">
+            <EntityTypeMapping TypeName="Model.Case">
+              <MappingFragment StoreEntitySet="Case">
+                <ScalarProperty Name="CaseId" ColumnName="CaseId" />
+                <ScalarProperty Name="CaseName" ColumnName="CaseName" />
+                <ScalarProperty Name="Plaintiff" ColumnName="Plaintiff" />
+                <ScalarProperty Name="Defender" ColumnName="Defender" />
+                <ScalarProperty Name="OpponentLawyer" ColumnName="OpponentLawyer" />
+                <ScalarProperty Name="CaseDiscription" ColumnName="CaseDiscription" />
+                <ScalarProperty Name="startDate" ColumnName="startDate" />
+                <ScalarProperty Name="CourtId" ColumnName="CourtId" />
+                <ScalarProperty Name="CaseType" ColumnName="CaseType" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="isComplete" ColumnName="isComplete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CaseHearingDates">
+            <EntityTypeMapping TypeName="Model.CaseHearingDate">
+              <MappingFragment StoreEntitySet="CaseHearingDate">
+                <ScalarProperty Name="CaseHearingId" ColumnName="CaseHearingId" />
+                <ScalarProperty Name="CaseId" ColumnName="CaseId" />
+                <ScalarProperty Name="HearingDate" ColumnName="HearingDate" />
+                <ScalarProperty Name="HearingTime" ColumnName="HearingTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="Model.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="ClientFname" ColumnName="ClientFname" />
+                <ScalarProperty Name="ClientContact" ColumnName="ClientContact" />
+                <ScalarProperty Name="ClientAddress" ColumnName="ClientAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courts">
+            <EntityTypeMapping TypeName="Model.Court">
+              <MappingFragment StoreEntitySet="Court">
+                <ScalarProperty Name="CourtId" ColumnName="CourtId" />
+                <ScalarProperty Name="CourtType" ColumnName="CourtType" />
+                <ScalarProperty Name="CourtCity" ColumnName="CourtCity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserAccounts">
+            <EntityTypeMapping TypeName="Model.UserAccount">
+              <MappingFragment StoreEntitySet="UserAccount">
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="Model.UserRole">
+              <MappingFragment StoreEntitySet="UserRoles">
+                <ScalarProperty Name="roleID" ColumnName="roleID" />
+                <ScalarProperty Name="roleName" ColumnName="roleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

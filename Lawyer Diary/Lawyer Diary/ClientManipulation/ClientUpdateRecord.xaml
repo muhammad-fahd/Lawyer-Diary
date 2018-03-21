@@ -1,0 +1,119 @@
+﻿<Window x:Class="Lawyer_Diary.ClientUpdateRecord"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:local="clr-namespace:Lawyer_Diary"
+        WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d" 
+             Title="Update Student Record" Height="450" Width="400" Loaded="Window_Loaded">
+    <!--<Window.Resources>
+        <Style x:Key="ToolTipInError" TargetType="{x:Type Control}">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0,2,40,2" />
+            <Setter Property="Validation.ErrorTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <DockPanel LastChildFill="True">
+                            <Border Background="Red" DockPanel.Dock="Right" Margin="5,0,0,0" Width="15" Height="15" CornerRadius="7"
+                                    ToolTip="{Binding ElementName=CustomAdorner , Path=AdornerElement.(Valdation)[0].ErrorContent}">
+                                <TextBlock Text="!" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
+                            </Border>
+                            <AdornedElementPlaceholder Name="CustomAdorner" VerticalAlignment="Center">
+                                <Border BorderBrush="Red" BorderThickness="1" />
+                            </AdornedElementPlaceholder>
+                        </DockPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>-->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="55*"/>
+            <ColumnDefinition Width="10*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="12*"/>
+            <RowDefinition Height="12*"/>
+            <RowDefinition Height="12*"/>
+            <RowDefinition Height="12*"/>
+            <RowDefinition Height="12*"/>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2">
+            <Label Content="Update Client Profile" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Foreground="Indigo"/>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Label Content="CNIC:" FontSize="15" VerticalAlignment="Center"
+                   Foreground="Indigo" HorizontalAlignment="Left" />
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="2" >
+            <xctk:MaskedTextBox Name="txtClientCNIC" IsEnabled="False" Mask="00000-0000000-0" 
+                                Text="{Binding ClientId}" FontSize="15" VerticalAlignment="Center"
+                                VerticalContentAlignment="Center" Height="30"
+                                ToolTipService.ToolTip="Enter CNIC" >
+            </xctk:MaskedTextBox>
+        </Grid>
+
+        <Grid Grid.Row="2" Grid.Column="1">
+            <Label Content="Client Name:" FontSize="15" Foreground="Indigo" 
+                   VerticalAlignment="Center" HorizontalAlignment="Left" />
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="2" >
+            <TextBox Name="txtClientName" FontSize="15" VerticalContentAlignment="Center" Text="{Binding ClientName}" 
+                     VerticalAlignment="Center" Height="30" ToolTipService.ToolTip="Enter Client Name">
+            </TextBox>
+        </Grid>
+
+        <Grid Grid.Row="3" Grid.Column="1">
+            <Label Content="Father Name:" FontSize="15" VerticalAlignment="Center"
+                   Foreground="Indigo" HorizontalAlignment="Left" />
+        </Grid>
+        <Grid Grid.Row="3" Grid.Column="2" >
+            <TextBox Name="txtClientFname" Text="{Binding ClientFname}" FontSize="15" VerticalContentAlignment="Center"
+                     VerticalAlignment="Center" Height="30" ToolTipService.ToolTip="Enter Client Father Name"/>
+        </Grid>
+        <Grid Grid.Row="4" Grid.Column="1">
+            <Label Content="Phone Number:" FontSize="15" VerticalAlignment="Center" 
+                   Foreground="Indigo" HorizontalAlignment="Left" />
+        </Grid>
+        <Grid Grid.Row="4" Grid.Column="2" >
+            <xctk:MaskedTextBox Mask="9999-9999999" Name="txtClientContact" Text="{Binding ClientContact}" FontSize="15"
+                                VerticalAlignment="Center" VerticalContentAlignment="Center" Height="30" 
+                                ToolTipService.ToolTip="Enter Contact"/>
+        </Grid>
+
+        <Grid Grid.Row="5" Grid.Column="1">
+            <Label Content="Address:" FontSize="15" VerticalAlignment="Center" 
+                   HorizontalAlignment="Left" Foreground="Indigo"/>
+        </Grid>
+        <Grid Grid.Row="5" Grid.Column="2" Grid.RowSpan="2">
+            <xctk:RichTextBox Name="txtClientAddress"  Text="{Binding ClientAddress}" FontSize="15" VerticalAlignment="Center"
+                     Height="80" ToolTipService.ToolTip="Type Complete Address here">
+                <xctk:RichTextBox.TextFormatter>
+                    <xctk:PlainTextFormatter />
+                </xctk:RichTextBox.TextFormatter>
+            </xctk:RichTextBox>
+        </Grid>
+
+        <Grid Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2">
+            <Button Content="Save" Name="btnClientSave" Width="180" FontSize="17" Height="35"  VerticalAlignment="Bottom" 
+                    HorizontalAlignment="Center" Background="Blue" Foreground="White" Click="btnClientSave_Click"/>
+        </Grid>
+    </Grid>
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5 , 0" StartPoint="0.5 , 1">
+            <GradientStop Color="CadetBlue" Offset="1"></GradientStop>
+            <GradientStop Color="White" Offset="1"></GradientStop>
+        </LinearGradientBrush>
+    </Window.Background>
+</Window>

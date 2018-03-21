@@ -1,0 +1,63 @@
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\bin\Debug\Lawyer Diary.exe.config
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\bin\Debug\Lawyer Diary.exe
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\bin\Debug\Lawyer Diary.pdb
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\bin\Debug\DBLayer.dll
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\bin\Debug\EntityFramework.dll
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\bin\Debug\EntityFramework.SqlServer.dll
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\bin\Debug\itextsharp.dll
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\bin\Debug\itextsharp.pdfa.dll
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\bin\Debug\itextsharp.xtra.dll
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\bin\Debug\ViewModels.dll
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\bin\Debug\Xceed.Wpf.Toolkit.dll
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\bin\Debug\DBLayer.pdb
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\bin\Debug\ViewModels.pdb
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\bin\Debug\EntityFramework.xml
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\bin\Debug\EntityFramework.SqlServer.xml
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\bin\Debug\itextsharp.xml
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\Lawyer Diary.csprojResolveAssemblyReference.cache
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\CaseManipulation\CaseUpdateRecord.g.cs
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\CaseManipulation\AddNewCase.g.cs
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\CourtManipulation\addNewCourt.g.cs
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\ClientManipulation\ClientUpdateRecord.g.cs
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\ClientManipulation\ClientRegistration.g.cs
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\EmployeeManipulation\EmployeeRegistration.g.cs
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\Hearings\HearingByDates.g.cs
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\Hearings\NextWeekHearings.g.cs
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\LoginWindow.g.cs
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\MainWindow.g.cs
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\ClientManipulation\ShowAllClients.g.cs
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\CaseManipulation\ShowAllCase.g.cs
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\EmployeeManipulation\ShowEmployeeRecord.g.cs
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\CaseManipulation\ShowPendingCase.g.cs
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\CaseManipulation\ShowCompleteCase.g.cs
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\Hearings\TomorrosHearings.g.cs
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\Hearings\TodaysHearings.g.cs
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\Hearings\UpdateCaseNextHearing.g.cs
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\Splash.g.cs
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\App.g.cs
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\Lawyer Diary_MarkupCompile.cache
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\Lawyer Diary_MarkupCompile.lref
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\CaseManipulation\CaseUpdateRecord.baml
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\CaseManipulation\AddNewCase.baml
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\CourtManipulation\addNewCourt.baml
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\ClientManipulation\ClientUpdateRecord.baml
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\ClientManipulation\ClientRegistration.baml
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\EmployeeManipulation\EmployeeRegistration.baml
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\Hearings\HearingByDates.baml
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\Hearings\NextWeekHearings.baml
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\LoginWindow.baml
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\MainWindow.baml
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\ClientManipulation\ShowAllClients.baml
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\CaseManipulation\ShowAllCase.baml
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\EmployeeManipulation\ShowEmployeeRecord.baml
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\CaseManipulation\ShowPendingCase.baml
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\CaseManipulation\ShowCompleteCase.baml
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\Hearings\TomorrosHearings.baml
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\Hearings\TodaysHearings.baml
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\Hearings\UpdateCaseNextHearing.baml
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\Splash.baml
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\Lawyer Diary.g.resources
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\Lawyer_Diary.Properties.Resources.resources
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\Lawyer Diary.csproj.GenerateResource.Cache
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\Lawyer Diary.exe
+D:\studdy\7th Semester\SDT\Semester Project\Lawyer Diary\Lawyer Diary\obj\Debug\Lawyer Diary.pdb

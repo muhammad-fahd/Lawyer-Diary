@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Case">
+    <Key>
+      <PropertyRef Name="CaseId" />
+    </Key>
+    <Property Name="CaseId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CaseName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Plaintiff" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Defender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OpponentLawyer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CaseDiscription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="startDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CourtId" Type="Guid" Nullable="false" />
+    <Property Name="CaseType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ClientId" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="isComplete" Type="Boolean" />
+    <NavigationProperty Name="Client" Relationship="Self.FK_Case_Client" FromRole="Case" ToRole="Client" />
+    <NavigationProperty Name="Court" Relationship="Self.FK_Case_Court" FromRole="Case" ToRole="Court" />
+  </EntityType>
+  <EntityType Name="CaseHearingDate">
+    <Key>
+      <PropertyRef Name="CaseHearingId" />
+    </Key>
+    <Property Name="CaseHearingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CaseId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="HearingDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="HearingTime" Type="Time" Precision="7" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="ClientId" />
+    </Key>
+    <Property Name="ClientId" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClientName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClientFname" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClientContact" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClientAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Cases" Relationship="Self.FK_Case_Client" FromRole="Client" ToRole="Case" />
+  </EntityType>
+  <EntityType Name="Court">
+    <Key>
+      <PropertyRef Name="CourtId" />
+    </Key>
+    <Property Name="CourtId" Type="Guid" Nullable="false" />
+    <Property Name="CourtType" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CourtCity" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Cases" Relationship="Self.FK_Case_Court" FromRole="Court" ToRole="Case" />
+  </EntityType>
+  <EntityType Name="UserAccount">
+    <Key>
+      <PropertyRef Name="userName" />
+    </Key>
+    <Property Name="userName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="userId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RoleID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="UserRole" Relationship="Self.FK_UserAccount_UserRoles" FromRole="UserAccount" ToRole="UserRoles" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="roleID" />
+    </Key>
+    <Property Name="roleID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="roleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="UserAccounts" Relationship="Self.FK_UserAccount_UserRoles" FromRole="UserRoles" ToRole="UserAccount" />
+  </EntityType>
+  <Association Name="FK_Case_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="Case" Type="Self.Case" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="ClientId" />
+      </Principal>
+      <Dependent Role="Case">
+        <PropertyRef Name="ClientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Case_Court">
+    <End Role="Court" Type="Self.Court" Multiplicity="1" />
+    <End Role="Case" Type="Self.Case" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Court">
+        <PropertyRef Name="CourtId" />
+      </Principal>
+      <Dependent Role="Case">
+        <PropertyRef Name="CourtId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserAccount_UserRoles">
+    <End Role="UserRoles" Type="Self.UserRole" Multiplicity="1" />
+    <End Role="UserAccount" Type="Self.UserAccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserRoles">
+        <PropertyRef Name="roleID" />
+      </Principal>
+      <Dependent Role="UserAccount">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Lawyer_DatabaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cases" EntityType="Self.Case" />
+    <EntitySet Name="CaseHearingDates" EntityType="Self.CaseHearingDate" />
+    <EntitySet Name="Clients" EntityType="Self.Client" />
+    <EntitySet Name="Courts" EntityType="Self.Court" />
+    <EntitySet Name="UserAccounts" EntityType="Self.UserAccount" />
+    <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+    <AssociationSet Name="FK_Case_Client" Association="Self.FK_Case_Client">
+      <End Role="Client" EntitySet="Clients" />
+      <End Role="Case" EntitySet="Cases" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Case_Court" Association="Self.FK_Case_Court">
+      <End Role="Court" EntitySet="Courts" />
+      <End Role="Case" EntitySet="Cases" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserAccount_UserRoles" Association="Self.FK_UserAccount_UserRoles">
+      <End Role="UserRoles" EntitySet="UserRoles" />
+      <End Role="UserAccount" EntitySet="UserAccounts" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

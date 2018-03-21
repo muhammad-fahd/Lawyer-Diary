@@ -1,0 +1,12 @@
+D:\studdy\7th Semester\SDT\Semester Project\DBLayer\bin\Debug\DBLayer.dll.config
+D:\studdy\7th Semester\SDT\Semester Project\DBLayer\bin\Debug\DBLayer.dll
+D:\studdy\7th Semester\SDT\Semester Project\DBLayer\bin\Debug\DBLayer.pdb
+D:\studdy\7th Semester\SDT\Semester Project\DBLayer\bin\Debug\EntityFramework.dll
+D:\studdy\7th Semester\SDT\Semester Project\DBLayer\bin\Debug\EntityFramework.SqlServer.dll
+D:\studdy\7th Semester\SDT\Semester Project\DBLayer\bin\Debug\ViewModels.dll
+D:\studdy\7th Semester\SDT\Semester Project\DBLayer\bin\Debug\ViewModels.pdb
+D:\studdy\7th Semester\SDT\Semester Project\DBLayer\bin\Debug\EntityFramework.xml
+D:\studdy\7th Semester\SDT\Semester Project\DBLayer\bin\Debug\EntityFramework.SqlServer.xml
+D:\studdy\7th Semester\SDT\Semester Project\DBLayer\obj\Debug\DBLayer.csprojResolveAssemblyReference.cache
+D:\studdy\7th Semester\SDT\Semester Project\DBLayer\obj\Debug\DBLayer.dll
+D:\studdy\7th Semester\SDT\Semester Project\DBLayer\obj\Debug\DBLayer.pdb

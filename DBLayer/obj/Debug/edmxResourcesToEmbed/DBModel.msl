@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Lawyer_DatabaseEntities">
+    <EntitySetMapping Name="Cases">
+      <EntityTypeMapping TypeName="Model.Case">
+        <MappingFragment StoreEntitySet="Case">
+          <ScalarProperty Name="CaseId" ColumnName="CaseId" />
+          <ScalarProperty Name="CaseName" ColumnName="CaseName" />
+          <ScalarProperty Name="Plaintiff" ColumnName="Plaintiff" />
+          <ScalarProperty Name="Defender" ColumnName="Defender" />
+          <ScalarProperty Name="OpponentLawyer" ColumnName="OpponentLawyer" />
+          <ScalarProperty Name="CaseDiscription" ColumnName="CaseDiscription" />
+          <ScalarProperty Name="startDate" ColumnName="startDate" />
+          <ScalarProperty Name="CourtId" ColumnName="CourtId" />
+          <ScalarProperty Name="CaseType" ColumnName="CaseType" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="isComplete" ColumnName="isComplete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CaseHearingDates">
+      <EntityTypeMapping TypeName="Model.CaseHearingDate">
+        <MappingFragment StoreEntitySet="CaseHearingDate">
+          <ScalarProperty Name="CaseHearingId" ColumnName="CaseHearingId" />
+          <ScalarProperty Name="CaseId" ColumnName="CaseId" />
+          <ScalarProperty Name="HearingDate" ColumnName="HearingDate" />
+          <ScalarProperty Name="HearingTime" ColumnName="HearingTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="Model.Client">
+        <MappingFragment StoreEntitySet="Client">
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+          <ScalarProperty Name="ClientFname" ColumnName="ClientFname" />
+          <ScalarProperty Name="ClientContact" ColumnName="ClientContact" />
+          <ScalarProperty Name="ClientAddress" ColumnName="ClientAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Courts">
+      <EntityTypeMapping TypeName="Model.Court">
+        <MappingFragment StoreEntitySet="Court">
+          <ScalarProperty Name="CourtId" ColumnName="CourtId" />
+          <ScalarProperty Name="CourtType" ColumnName="CourtType" />
+          <ScalarProperty Name="CourtCity" ColumnName="CourtCity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserAccounts">
+      <EntityTypeMapping TypeName="Model.UserAccount">
+        <MappingFragment StoreEntitySet="UserAccount">
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRoles">
+      <EntityTypeMapping TypeName="Model.UserRole">
+        <MappingFragment StoreEntitySet="UserRoles">
+          <ScalarProperty Name="roleID" ColumnName="roleID" />
+          <ScalarProperty Name="roleName" ColumnName="roleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

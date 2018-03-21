@@ -1,0 +1,198 @@
+﻿<Window x:Class="Lawyer_Diary.CaseUpdateRecord"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lawyer_Diary"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        ResizeMode="CanResize"
+        WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d"
+        Title="Add/Update Case" Height="700" Width="1000" Loaded="Window_Loaded">
+    <Window.Resources>
+
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.2*"/>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="2.5*"/>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="2.5*"/>
+            <ColumnDefinition Width="0.2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="2.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.3*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="0" >
+
+            <Label Content="Update Case" FontSize="17"  VerticalAlignment="Center" 
+                   Foreground="Indigo" HorizontalAlignment="Left" FontWeight="DemiBold"/>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="0">
+            <Button Name="btnPrintCase" Content="Print Case" Width="100" FontSize="12" FontWeight="DemiBold" 
+                    VerticalAlignment="Center"  HorizontalAlignment="left" Background="Blue" Click="btnPrintCase_Click" 
+                    Height="30"  />
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Label Content="Case Id:" FontSize="15" VerticalAlignment="Center"
+                   Foreground="Indigo" HorizontalAlignment="Left" FontWeight="DemiBold"/>
+        </Grid>
+        <Grid Grid.Column="2" Grid.Row="1">
+            <TextBox Name="txtCaseId"  FontSize="15" VerticalAlignment="Center" VerticalContentAlignment="Center"
+                     IsEnabled="False" Text="{Binding CaseId}"
+                     Height="35" ToolTipService.ToolTip="Enter Case Id Provide By Majistrate"/>
+        </Grid>
+
+        <Grid Grid.Column="4" Grid.Row="1">
+            <Label Content="Case Name:" FontSize="15" FontWeight="DemiBold" VerticalAlignment="Center"
+                   Foreground="Indigo" HorizontalAlignment="Left" />
+        </Grid>
+        <Grid Grid.Column="5" Grid.Row="1">
+            <TextBox Name="txtCaseName" FontSize="15" VerticalAlignment="Center" VerticalContentAlignment="Center" 
+                     Text="{Binding CaseName}"
+                     Height="35" ToolTipService.ToolTip="Enter Case Name (to remeber, Write CaseID and Client Name as Case Name)"/>
+        </Grid>
+
+        <Grid Grid.Column="1" Grid.Row="2">
+            <Label Content="Plaintiff/Petitioner:" FontSize="15" FontWeight="DemiBold" VerticalAlignment="Center"
+                   Foreground="Indigo" HorizontalAlignment="Left" />
+        </Grid>
+        <Grid Grid.Column="2" Grid.Row="2">
+            <TextBox Name="txtCasePlaintiff" Text="{Binding Plaintiff}" FontSize="15" VerticalAlignment="Center" VerticalContentAlignment="Center" 
+                     Height="35" ToolTipService.ToolTip="Enter Plaintif/Petitioner Name" />
+        </Grid>
+
+        <Grid Grid.Column="4" Grid.Row="2">
+            <Label Content="Defender/Respondent:" FontSize="15" FontWeight="DemiBold" VerticalAlignment="Center"
+                   Foreground="Indigo" HorizontalAlignment="Left" />
+        </Grid>
+        <Grid Grid.Column="5" Grid.Row="2">
+            <TextBox Name="txtCaseDefender" Text="{Binding Defender}" FontSize="15" VerticalAlignment="Center"
+                     VerticalContentAlignment="Center" 
+                     Height="35" ToolTipService.ToolTip="Enter Defender/Respondent Name"/>
+        </Grid>
+
+        <Grid Grid.Column="1" Grid.Row="3">
+            <Label Content="Opponent Lawyer:" FontSize="15" FontWeight="DemiBold" VerticalAlignment="Center"
+                   Foreground="Indigo" HorizontalAlignment="Left" />
+        </Grid>
+        <Grid Grid.Column="2" Grid.Row="3">
+            <TextBox Name="txtCaseOppLawyer" Text="{Binding OpponentLawyer}" FontSize="15" VerticalAlignment="Center" VerticalContentAlignment="Center" 
+                     Height="35" ToolTipService.ToolTip="Enter Opponent Party Lawyer Name"/>
+        </Grid>
+
+        <Grid Grid.Column="4" Grid.Row="3">
+            <Label Content="Start Date:" FontSize="15" FontWeight="DemiBold" VerticalAlignment="Center"
+                   Foreground="Indigo" HorizontalAlignment="Left" />
+        </Grid>
+        <Grid Grid.Column="5" Grid.Row="3">
+            <DatePicker  Name="dpCaseStartDate" SelectedDate="{Binding startDate}" VerticalAlignment="Center" Height="29"
+                         FontSize="15" Width="170"
+                         HorizontalAlignment="Left" ToolTipService.ToolTip="Select Case Starting/Registration Date"/>
+        </Grid>
+
+        <Grid Grid.Column="1" Grid.Row="4">
+            <Label Content="Select Court Type:" FontSize="15" FontWeight="DemiBold" VerticalAlignment="Center"
+                   Foreground="Indigo" HorizontalAlignment="Left" />
+        </Grid>
+        <Grid Grid.Column="2" Grid.Row="4">
+            <ComboBox Name="cbCaseCourtType" ItemsSource="{Binding}" FontSize="15" VerticalAlignment="Center" VerticalContentAlignment="Center" 
+                     Height="35" ToolTipService.ToolTip="Select Court Type (Session/High/Supereme)" />
+        </Grid>
+
+        <Grid Grid.Column="4" Grid.Row="4">
+            <Label Content="Select Court City:" FontSize="15" FontWeight="DemiBold" VerticalAlignment="Center"
+                   Foreground="Indigo" HorizontalAlignment="Left" />
+        </Grid>
+        <Grid Grid.Column="5" Grid.Row="4">
+            <ComboBox  Name="cbCaseCourtCity" ItemsSource="{Binding}"  VerticalAlignment="Center" Height="35" FontSize="15" 
+                                 ToolTipService.ToolTip="Select Case Starting/Registration Date"/>
+        </Grid>
+
+        <Grid Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2">
+            <Label Content="If you did't find court in List then" FontSize="16" FontWeight="DemiBold" 
+                   VerticalAlignment="Center" Foreground="Indigo" HorizontalAlignment="Right" />
+        </Grid>
+        <Grid Grid.Column="4" Grid.Row="5">
+            <Button Name="btnCase_AddCourt" Content="Click Here" FontSize="15" FontWeight="DemiBold"  Margin="20 0 0 0"
+                    VerticalAlignment="Center" Foreground="Indigo" HorizontalAlignment="Left" Background="Transparent" Click="btnCase_AddCourt_Click"/>
+        </Grid>
+
+        <Grid Grid.Column="1" Grid.Row="6">
+            <Label Content="Select Case Type:" FontSize="15" FontWeight="DemiBold" VerticalAlignment="Top"
+                   Foreground="Indigo" HorizontalAlignment="Left" />
+        </Grid>
+        <Grid Grid.Column="2" Grid.Row="6">
+            <ComboBox Name="cbCaseType" ItemsSource="{Binding}" FontSize="15" VerticalAlignment="Top" VerticalContentAlignment="Center" 
+                     Height="35" ToolTipService.ToolTip="Select Case Type (Criminal/Family/Civil etc)" />
+        </Grid>
+
+        <Grid Grid.Column="4" Grid.Row="6">
+            <Label Content="Case Client Id:" FontSize="15" FontWeight="DemiBold" VerticalAlignment="Top"
+                   Foreground="Indigo" HorizontalAlignment="Left"/>
+        </Grid>
+        <Grid Grid.Column="5" Grid.Row="6">
+            <!--<ComboBox Name="cbCaseClient" ItemsSource="{Binding}" SelectedValue="{Binding ClientName}" FontSize="15" VerticalAlignment="Top" 
+                      VerticalContentAlignment="Center" 
+                     Height="35" ToolTipService.ToolTip="Select Your Client of This Case"/>-->
+            <TextBox Name="txtCaseClientID" Text="{Binding Client.ClientName}" IsEnabled="False" FontSize="15" VerticalAlignment="Top" VerticalContentAlignment="Center" 
+                     Height="35" ToolTipService.ToolTip="Case Client Id"/>
+        </Grid>
+
+        <Grid Grid.Column="1" Grid.Row="7">
+            <Label Content="Case Discription:" FontSize="15" FontWeight="DemiBold" VerticalAlignment="Center"
+                   Foreground="Indigo" HorizontalAlignment="Left" />
+        </Grid>
+        <Grid Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="4">
+
+            <xctk:RichTextBox Name="txtCaseDisc" FontSize="15" Text="{Binding CaseDiscription}" VerticalAlignment="Center"  
+                              Height="230" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True"
+                              ToolTipService.ToolTip="Enter Opponent Party Lawyer Name">
+                <xctk:RichTextBox.TextFormatter>
+                    <xctk:PlainTextFormatter/>
+                </xctk:RichTextBox.TextFormatter>
+                <xctk:RichTextBoxFormatBarManager.FormatBar>
+                    <xctk:RichTextBoxFormatBar />
+                </xctk:RichTextBoxFormatBarManager.FormatBar>
+            </xctk:RichTextBox>
+
+        </Grid>
+
+        <Grid Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="2">
+            <Button Name="btnCaseSave" Content="Save" Width="100" FontSize="15" FontWeight="DemiBold" VerticalAlignment="Center"
+                    Foreground="White" HorizontalAlignment="Right" Height="35" Background="Blue" Click="btnCaseSave_Click"/>
+        </Grid>
+        <Grid Grid.Column="4" Grid.Row="8">
+
+            <Button Name="btnCaseCancel" Content="Cancel" Width="100" FontSize="15" FontWeight="DemiBold" 
+                    VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Left"
+                    Height="35" Background="Blue" Click="btnCaseCancel_Click"/>
+        </Grid>
+        <Grid Grid.Column="5" Grid.Row="8">
+        <Label Content="case complete?" FontSize="15" FontWeight="DemiBold" VerticalAlignment="Center"
+                   Foreground="Indigo" HorizontalAlignment="Left" />
+            <CheckBox Name="cbIsCaseCompleted" IsChecked="{Binding isComplete}" 
+                      HorizontalAlignment="Center" VerticalAlignment="Center">
+            </CheckBox>
+            
+        </Grid>
+        
+    </Grid>
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5 , 0" StartPoint="0.5 , 1">
+            <GradientStop Color="CadetBlue" Offset="1"></GradientStop>
+            <GradientStop Color="White" Offset="1"></GradientStop>
+        </LinearGradientBrush>
+    </Window.Background>
+</Window>

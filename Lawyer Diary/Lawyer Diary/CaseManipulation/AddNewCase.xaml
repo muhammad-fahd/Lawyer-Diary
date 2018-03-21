@@ -1,0 +1,290 @@
+﻿<Window x:Class="Lawyer_Diary.AddNewCase"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lawyer_Diary"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        ResizeMode="CanResize"
+        WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d"
+        Title="Add/Update Case" Height="700" Width="1000" Loaded="Window_Loaded">
+    <Window.Resources>
+        <Style x:Key="ToolTipInError" TargetType="{x:Type Control}">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0,2,40,2" />
+            <Setter Property="Validation.ErrorTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <DockPanel LastChildFill="True">
+                            <Border Background="Red" DockPanel.Dock="Right" Margin="5,0,0,0" Width="15" Height="15" CornerRadius="7"
+                                    ToolTip="{Binding ElementName=CustomAdorner , Path=AdornerElement.(Valdation)[0].ErrorContent}">
+                                <TextBlock Text="!" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Foreground="White"/>
+                            </Border>
+                            <AdornedElementPlaceholder Name="CustomAdorner" VerticalAlignment="Center">
+                                <Border BorderBrush="Red" BorderThickness="1" />
+                            </AdornedElementPlaceholder>
+                        </DockPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.2*"/>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="2.5*"/>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="2.5*"/>
+            <ColumnDefinition Width="0.2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="2.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.3*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="0" >
+
+            <Label Content="Add New Case" FontSize="17"  VerticalAlignment="Center" 
+                   Foreground="Indigo" HorizontalAlignment="Left" FontWeight="DemiBold"/>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="0">
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Label Content="Case Id:" FontSize="15" VerticalAlignment="Center"
+                   Foreground="Indigo" HorizontalAlignment="Left" FontWeight="DemiBold"/>
+        </Grid>
+        <Grid Grid.Column="2" Grid.Row="1">
+            <TextBox Name="txtCaseId"  FontSize="15" VerticalAlignment="Center" VerticalContentAlignment="Center" 
+                     Style="{StaticResource ToolTipInError}" Height="35" 
+                     ToolTipService.ToolTip="Enter Case Id Provide By Majistrate" LostFocus="txtCaseId_LostFocus">
+                <TextBox.Text>
+                    <Binding Path="CaseId" NotifyOnValidationError="True" ValidatesOnDataErrors="True"
+                             UpdateSourceTrigger="PropertyChanged" >
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </Grid>
+
+        <Grid Grid.Column="4" Grid.Row="1">
+            <Label Content="Case Name:" FontSize="15" FontWeight="DemiBold" VerticalAlignment="Center"
+                   Foreground="Indigo" HorizontalAlignment="Left" />
+        </Grid>
+        <Grid Grid.Column="5" Grid.Row="1">
+            <TextBox Name="txtCaseName" FontSize="15" VerticalAlignment="Center" VerticalContentAlignment="Center" 
+                     Height="35"  Style="{StaticResource ToolTipInError}"
+                     ToolTipService.ToolTip="Enter Case Name (to remeber, Write CaseID and Client Name as Case Name)">
+                <TextBox.Text>
+                    <Binding Path="CaseName" NotifyOnValidationError="True" ValidatesOnDataErrors="True"
+                             UpdateSourceTrigger="PropertyChanged" >
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </Grid>
+
+        <Grid Grid.Column="1" Grid.Row="2">
+            <Label Content="Plaintiff/Petitioner:" FontSize="15" FontWeight="DemiBold" VerticalAlignment="Center"
+                   Foreground="Indigo" HorizontalAlignment="Left" />
+        </Grid>
+        <Grid Grid.Column="2" Grid.Row="2">
+            <TextBox Name="txtCasePlaintiff" FontSize="15" VerticalAlignment="Center" VerticalContentAlignment="Center" 
+                     Height="35" ToolTipService.ToolTip="Enter Plaintif/Petitioner Name"  Style="{StaticResource ToolTipInError}">
+                <TextBox.Text>
+                    <Binding Path="Plaintiff" NotifyOnValidationError="True" ValidatesOnDataErrors="True"
+                             UpdateSourceTrigger="PropertyChanged" >
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </Grid>
+
+        <Grid Grid.Column="4" Grid.Row="2">
+            <Label Content="Defender/Respondent:" FontSize="15" FontWeight="DemiBold" VerticalAlignment="Center"
+                   Foreground="Indigo" HorizontalAlignment="Left" />
+        </Grid>
+        <Grid Grid.Column="5" Grid.Row="2">
+            <TextBox Name="txtCaseDefender" FontSize="15" VerticalAlignment="Center" VerticalContentAlignment="Center" 
+                     Height="35" ToolTipService.ToolTip="Enter Defender/Respondent Name" Style="{StaticResource ToolTipInError}">
+                <TextBox.Text>
+                    <Binding Path="Defender" NotifyOnValidationError="True" ValidatesOnDataErrors="True"
+                             UpdateSourceTrigger="PropertyChanged" >
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </Grid>
+
+        <Grid Grid.Column="1" Grid.Row="3">
+            <Label Content="Opponent Lawyer:" FontSize="15" FontWeight="DemiBold" VerticalAlignment="Center"
+                   Foreground="Indigo" HorizontalAlignment="Left" />
+        </Grid>
+        <Grid Grid.Column="2" Grid.Row="3">
+            <TextBox Name="txtCaseOppLawyer" FontSize="15" VerticalAlignment="Center" VerticalContentAlignment="Center" 
+                     Height="35" ToolTipService.ToolTip="Enter Opponent Party Lawyer Name" Style="{StaticResource ToolTipInError}">
+                <TextBox.Text>
+                    <Binding Path="OpponentLawyer" NotifyOnValidationError="True" ValidatesOnDataErrors="True"
+                             UpdateSourceTrigger="PropertyChanged" >
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </Grid>
+
+        <Grid Grid.Column="4" Grid.Row="3">
+            <Label Content="Start Date:" FontSize="15" FontWeight="DemiBold" VerticalAlignment="Center"
+                   Foreground="Indigo" HorizontalAlignment="Left" />
+        </Grid>
+        <Grid Grid.Column="5" Grid.Row="3">
+            <DatePicker  Name="dpCaseStartDate" VerticalAlignment="Center" Height="30" FontSize="15" Width="170"
+                         HorizontalAlignment="Left" ToolTipService.ToolTip="Select Case Starting/Registration Date"
+                         Style="{StaticResource ToolTipInError}" >
+                <DatePicker.SelectedDate>
+                    <Binding Path="startDate" NotifyOnValidationError="True" ValidatesOnDataErrors="True"
+                             UpdateSourceTrigger="PropertyChanged" >
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </DatePicker.SelectedDate>
+            </DatePicker>
+        </Grid>
+
+        <Grid Grid.Column="1" Grid.Row="4">
+            <Label Content="Select Court Type:" FontSize="15" FontWeight="DemiBold" VerticalAlignment="Center"
+                   Foreground="Indigo" HorizontalAlignment="Left" />
+        </Grid>
+        <Grid Grid.Column="2" Grid.Row="4">
+            <ComboBox Name="cbCaseCourtType" FontSize="15" VerticalAlignment="Center" VerticalContentAlignment="Center" 
+                     Height="35" ToolTipService.ToolTip="Select Court Type (Session/High/Supereme)" Style="{StaticResource ToolTipInError}">
+            </ComboBox>
+        </Grid>
+
+        <Grid Grid.Column="4" Grid.Row="4">
+            <Label Content="Select Court City:" FontSize="15" FontWeight="DemiBold" VerticalAlignment="Center"
+                   Foreground="Indigo" HorizontalAlignment="Left" />
+        </Grid>
+        <Grid Grid.Column="5" Grid.Row="4">
+            <ComboBox  Name="cbCaseCourtCity" VerticalAlignment="Center" Height="35" FontSize="15" 
+                       Style="{StaticResource ToolTipInError}" ToolTipService.ToolTip="Select Case Starting/Registration Date"
+                       />
+        </Grid>
+
+        <Grid Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2">
+            <Label Content="If you did't find court in List then" FontSize="16" FontWeight="DemiBold" 
+                   VerticalAlignment="Center" Foreground="Indigo" HorizontalAlignment="Right" />
+        </Grid>
+        <Grid Grid.Column="4" Grid.Row="5">
+            <Button Name="btnCase_AddCourt" Content="Click Here" FontSize="15" FontWeight="DemiBold"  Margin="20 0 0 0"
+                    VerticalAlignment="Center" Foreground="Indigo" HorizontalAlignment="Left" Background="Transparent" Click="btnCase_AddCourt_Click"/>
+        </Grid>
+
+        <Grid Grid.Column="1" Grid.Row="6">
+            <Label Content="Select Case Type:" FontSize="15" FontWeight="DemiBold" VerticalAlignment="Top"
+                   Foreground="Indigo" HorizontalAlignment="Left" />
+        </Grid>
+        <Grid Grid.Column="2" Grid.Row="6">
+            <ComboBox Name="cbCaseType" FontSize="15" VerticalAlignment="Top" VerticalContentAlignment="Center" 
+                     Height="35" ToolTipService.ToolTip="Select Case Type (Criminal/Family/Civil etc)" 
+                     Style="{StaticResource ToolTipInError}">
+                <ComboBox.SelectedValue>
+                    <Binding Path="CaseType" NotifyOnValidationError="True" ValidatesOnDataErrors="True"
+                             UpdateSourceTrigger="PropertyChanged" >
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </ComboBox.SelectedValue>
+            </ComboBox>
+        </Grid>
+
+        <Grid Grid.Column="4" Grid.Row="6">
+            <Label Content="Select Case Client:" FontSize="15" FontWeight="DemiBold" VerticalAlignment="Top"
+                   Foreground="Indigo" HorizontalAlignment="Left"/>
+        </Grid>
+        <Grid Grid.Column="5" Grid.Row="6">
+            <ComboBox Name="cbCaseClient" FontSize="15" VerticalAlignment="Top" VerticalContentAlignment="Center" 
+                     Height="35" ToolTipService.ToolTip="Select Your Client of This Case" Style="{StaticResource ToolTipInError}">
+                <ComboBox.SelectedValue>
+                    <Binding Path="ClientId" NotifyOnValidationError="True" ValidatesOnDataErrors="True"
+                             UpdateSourceTrigger="PropertyChanged" >
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </ComboBox.SelectedValue>
+            </ComboBox>
+        </Grid>
+
+        <Grid Grid.Column="1" Grid.Row="7">
+            <Label Content="Case Discription:" FontSize="15" FontWeight="DemiBold" VerticalAlignment="Center"
+                   Foreground="Indigo" HorizontalAlignment="Left" />
+        </Grid>
+        <Grid Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="4">
+            <xctk:RichTextBox Name="txtCaseDisc" FontSize="15" VerticalAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Visible"
+                              ScrollViewer.CanContentScroll="True"  Style="{StaticResource ToolTipInError}"
+                              Height="230" ToolTipService.ToolTip="Enter Opponent Party Lawyer Name">
+                <xctk:RichTextBox.Text>
+                    <Binding Path="CaseDiscription" NotifyOnValidationError="True" ValidatesOnDataErrors="True"
+                             UpdateSourceTrigger="PropertyChanged" >
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </xctk:RichTextBox.Text>
+                <xctk:RichTextBoxFormatBarManager.FormatBar>
+                    <xctk:RichTextBoxFormatBar />
+                </xctk:RichTextBoxFormatBarManager.FormatBar>
+                <xctk:RichTextBox.TextFormatter>
+                    <xctk:PlainTextFormatter/>
+                </xctk:RichTextBox.TextFormatter>
+            </xctk:RichTextBox>
+        </Grid>
+
+        <Grid Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="2">
+            <Button Name="btnCaseSave" Content="Save" Width="100" FontSize="15" FontWeight="DemiBold" VerticalAlignment="Center"
+                    Foreground="White" HorizontalAlignment="Right" Height="35" Background="Blue" Click="btnCaseSave_Click"/>
+            <Label Name="txtErrorShow" FontSize="15" FontWeight="DemiBold" VerticalAlignment="Center"
+                   Foreground="Red" HorizontalAlignment="Center" />
+        </Grid>
+        <Grid Grid.Column="4" Grid.Row="8">
+
+            <Button Name="btnCaseCancel" Content="Cancel" Width="100" FontSize="15" FontWeight="DemiBold" 
+                    VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Left"
+                    Height="35" Background="Blue" Click="btnCaseCancel_Click"/>
+        </Grid>
+        <Grid Grid.Column="5" Grid.Row="8">
+        <Label Content="case complete?" FontSize="15" FontWeight="DemiBold" VerticalAlignment="Center"
+                   Foreground="Indigo" HorizontalAlignment="Left" />
+            <CheckBox Name="cbIsCaseCompleted" HorizontalAlignment="Center" VerticalAlignment="Center"></CheckBox>
+            
+        </Grid>
+        
+    </Grid>
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5 , 0" StartPoint="0.5 , 1">
+            <GradientStop Color="CadetBlue" Offset="1"></GradientStop>
+            <GradientStop Color="White" Offset="1"></GradientStop>
+        </LinearGradientBrush>
+    </Window.Background>
+</Window>
